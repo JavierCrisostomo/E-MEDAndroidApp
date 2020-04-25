@@ -1,4 +1,4 @@
-package src.Views;
+package src.Views.consult;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import com.unnamed.b.atv.view.AndroidTreeView;
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 
-public class ConsultView extends RelativeLayout {
+public abstract class ConsultView extends RelativeLayout {
 
     protected LayoutInflater inflater;
 
@@ -28,4 +28,6 @@ public class ConsultView extends RelativeLayout {
 
 
     }
+
+    public abstract void createMenuView();
 }

@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import e.wolfsoft1.src.R;
 import src.activities.HomeActivity;
+import src.activities.PatientHomeActivity;
 
 public class FirstActivity extends AppCompatActivity {
     TextView screen1,screen2,screen3,screen4;
@@ -41,7 +42,7 @@ public class FirstActivity extends AppCompatActivity {
         screen3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(FirstActivity.this, HomeActivity.class);
+                Intent intent=new Intent(FirstActivity.this, PatientHomeActivity.class);
                 startActivity(intent);
             }
         });

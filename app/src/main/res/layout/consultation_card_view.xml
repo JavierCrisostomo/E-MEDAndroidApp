@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="10dp"
+    android:elevation="1dp"
+    android:background="@drawable/recycle_rect">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:minWidth="120dp"
+        android:layout_gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <src.customfonts.MyTextView_Roboto_Regular
+            android:id="@+id/consult_date_day"
+            android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="14"
+        android:textColor="@color/colorPrimarySkyBlue"
+        android:textSize="40dp" />
+
+        <src.customfonts.MyTextView_Roboto_Regular
+            android:id="@+id/consult_date_month"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Aug"
+            android:textColor="@color/colorSecondaryOrange"
+            android:textSize="36dp" />
+
+        <src.customfonts.MyTextView_Roboto_Regular
+            android:id="@+id/consult_date_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="2020"
+            android:textColor="@color/colorSecondaryOrangeDarker"
+            android:textSize="26dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp">
+
+            <src.customfonts.MyTextView_Roboto_Regular
+                android:id="@+id/consult_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:text="Pending..."
+                android:textColor="@color/colorStatusPending"
+                android:textSize="14dp" />
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_grey_star" />
+        </LinearLayout>
+
+        <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/selected_symptoms_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            app:alignContent="stretch"
+            app:alignItems="stretch"
+            app:flexWrap="wrap">
+
+            <src.customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/facilities_rect"
+                android:backgroundTint="@color/colorSecondaryLightBlue"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="5dp"
+                android:text="Headache" />
+
+            <src.customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/facilities_rect"
+                android:backgroundTint="@color/colorSecondaryLightBlue"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="5dp"
+                android:text="Migranes" />
+
+            <src.customfonts.MyTextView_Roboto_Regular
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/facilities_rect"
+                android:backgroundTint="@color/colorSecondaryLightBlue"
+                android:paddingLeft="7dp"
+                android:paddingTop="5dp"
+                android:paddingRight="7dp"
+                android:paddingBottom="5dp"
+
+                android:text="Insomnia" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+        <src.customfonts.MyTextView_Roboto_Regular
+            android:id="@+id/symptom_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="@string/description"
+            android:textColor="#A2A2A2"
+            android:textSize="12dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

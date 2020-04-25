@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import e.wolfsoft1.src.R;
@@ -27,7 +28,7 @@ public class SignInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-        btnSignIn=(TextView)findViewById(R.id.btnSignIn);
+        btnSignIn = (TextView) findViewById(R.id.btnSignIn);
 
         final IUserService userService = new UserService(getResources().getString(R.string.server_host));
 
@@ -37,24 +38,30 @@ public class SignInActivity extends AppCompatActivity {
                 String username = ((EditText) findViewById(R.id.username_editbox)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password_editbox)).getText().toString();
 
-                userService.loginUser(username, password, loginRequestListener);
+                JSONObject loginResponse = userService.loginUser(username, password);
+
+                if (loginResponse == null) {
+                    loginFailedToast();
+                } else {
+                    try {
+                        String userKey = loginResponse.get("key").toString();
+                        // pass userkey to hoem activity
+                        Intent intent = new Intent(SignInActivity.this, PatientHomeActivity.class);
+                        intent.putExtra("UserKey", userKey);
+                        startActivity(intent);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        loginFailedToast();
+                    }
+                }
             }
         });
     }
 
-    private JSONObjectRequestListener loginRequestListener = new JSONObjectRequestListener() {
-        @Override
-        public void onResponse(JSONObject response) {
-            Intent intent =new Intent(SignInActivity.this, PatientHomeActivity.class);
-            startActivity(intent);
-            Toast toast = Toast.makeText(getBaseContext(), "Login successful!", Toast.LENGTH_LONG);
-            toast.show();
-        }
+    private void loginFailedToast() {
+        Toast toast = Toast.makeText(getBaseContext(), "Login successful!", Toast.LENGTH_LONG);
+        toast.show();
+    }
 
-        @Override
-        public void onError(ANError anError) {
-            Toast toast = Toast.makeText(getBaseContext(), "Login failed!", Toast.LENGTH_LONG);
-            toast.show();
-        }
-    };
 }

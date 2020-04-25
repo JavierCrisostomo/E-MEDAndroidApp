@@ -1,15 +1,14 @@
 package src.activities;
 
+import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import e.wolfsoft1.src.R;
-import src.Views.ConsultView;
-import src.Views.PatientCreateConsultView;
+import src.Views.consult.ConsultView;
+import src.Views.consult.PatientCreateConsultView;
 
-public class ConsultActivity extends AppCompatActivity {
-
+public class ViewConsultWithCommentsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

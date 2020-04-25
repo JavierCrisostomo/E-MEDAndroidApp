@@ -66,15 +66,7 @@ public class SymptomViewHolder extends TreeNode.BaseNodeViewHolder<SymptomViewHo
             FlexboxLayout selected_symptom_layout = view.getRootView().findViewById(R.id.selected_symptoms_layout);
 
             if(((CheckBox) view).isChecked()){
-                MyTextView_Roboto_Regular chip = new MyTextView_Roboto_Regular(view.getContext());
-                chip.setText(symptom_name);
-                chip.setBackgroundResource(R.drawable.facilities_rect);
-                chip.setPadding(20,20, 20, 20);
-                chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
-
-                TableRow.LayoutParams chip_layout_params = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                chip_layout_params.setMargins(10, 10, 10, 10);
-                chip.setLayoutParams(chip_layout_params);
+                TextView chip = createChip(symptom_name, view.getContext());
 
                 selected_symptom_layout.addView(chip);
                 selectedSymptoms.put(symptom_node_item.id, chip);
@@ -84,6 +76,19 @@ public class SymptomViewHolder extends TreeNode.BaseNodeViewHolder<SymptomViewHo
                 ((FlexboxLayout) chip.getParent()).removeView(chip);
             }
         }
+    }
+
+    private TextView createChip(CharSequence symptom_name, Context context) {
+        MyTextView_Roboto_Regular chip = new MyTextView_Roboto_Regular(context);
+        chip.setText(symptom_name);
+        chip.setBackgroundResource(R.drawable.facilities_rect);
+        chip.setPadding(20,20, 20, 20);
+        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
+
+        TableRow.LayoutParams chip_layout_params = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        chip_layout_params.setMargins(10, 10, 10, 10);
+        chip.setLayoutParams(chip_layout_params);
+        return chip;
     }
 
     public static class IconTreeItem {

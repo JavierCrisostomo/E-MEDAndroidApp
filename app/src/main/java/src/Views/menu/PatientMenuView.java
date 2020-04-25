@@ -1,4 +1,4 @@
-package src.Views;
+package src.Views.menu;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,10 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 
 import e.wolfsoft1.src.R;
-import src.FirstActivity;
-import src.activities.HomeActivity;
-import src.activities.ConsultActivity;
+import src.activities.PatientCreateConsultActivity;
 import src.activities.PatientHomeActivity;
+import src.activities.PatientProfileActivity;
 
 public class PatientMenuView extends MenuView {
     public PatientMenuView(Context context, AttributeSet attrs) {
@@ -20,7 +19,7 @@ public class PatientMenuView extends MenuView {
         inflater.inflate(R.layout.patient_menu_layout, this, true);
 
         (this.findViewById(R.id.home_btn)).setOnClickListener(new HomeButtonOnClickListener());
-        (this.findViewById(R.id.choose_screen_btn)).setOnClickListener(new ChooseScreenOnClickListener());
+        (this.findViewById(R.id.profile_btn)).setOnClickListener(new ProfileButtonOnClickListener());
         (this.findViewById(R.id.add_consult_btn)).setOnClickListener(new ConsultButtonOnClickListener());
     }
 
@@ -32,10 +31,10 @@ public class PatientMenuView extends MenuView {
         }
     }
 
-    class ChooseScreenOnClickListener implements View.OnClickListener {
+    class ProfileButtonOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent=new Intent(getContext(), FirstActivity.class);
+            Intent intent=new Intent(getContext(), PatientProfileActivity.class);
             getContext().startActivity(intent);
         }
     }
@@ -43,7 +42,7 @@ public class PatientMenuView extends MenuView {
     class ConsultButtonOnClickListener implements View.OnClickListener {
         @Override
         public void onClick(View view) {
-            Intent intent=new Intent(getContext(), ConsultActivity.class);
+            Intent intent=new Intent(getContext(), PatientCreateConsultActivity.class);
             getContext().startActivity(intent);
         }
     }

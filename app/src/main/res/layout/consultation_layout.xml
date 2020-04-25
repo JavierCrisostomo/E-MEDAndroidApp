@@ -162,7 +162,7 @@
                         android:background="#dddddd" />
 
                     <LinearLayout
-                        android:id="@+id/symptom_description_layout"
+                        android:id="@+id/symptom_tree_layout"
                         android:layout_width="431dp"
                         android:layout_height="wrap_content"
                         android:background="#ffffff"
@@ -186,7 +186,7 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/symptom_layout"
+                            android:id="@+id/symptom_tree"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -218,13 +218,13 @@
                         android:orientation="vertical"
                         android:paddingLeft="10dp">
 
-                        <src.customfonts.MyTextView_Roboto_Regular
+                        <src.customfonts.MyTextView_Roboto_Medium
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="15dp"
                             android:paddingLeft="10dp"
                             android:text="Selected symptoms"
-                            android:textColor="@color/subText"
+                            android:textColor="#000"
                             android:textSize="14dp" />
 
                         <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -315,7 +315,6 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            android:editable="false"
                             android:text="@string/description"
                             android:textSize="14dp" />
 
@@ -336,7 +335,7 @@
                     android:orientation="vertical">
 
                     <LinearLayout
-                        android:id="@+id/chat_section"
+                        android:id="@+id/comment_section"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
@@ -362,6 +361,26 @@
                         <include layout="@layout/doctor_chat_entry"></include>
 
                         <include layout="@layout/patient_chat_entry"></include>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_margin="10dp">
+                            <src.customfonts.EditText_Roboto_Meidum
+                                android:layout_width="wrap_content"
+                                android:minWidth="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="30dp"
+                                android:layout_marginRight="10dp"/>
+
+                            <ImageView
+                                android:layout_width="40dp"
+                                android:layout_height="40dp"
+                                android:src="@drawable/ic_send_message" />
+                        </LinearLayout>
+
 
                     </LinearLayout>
 

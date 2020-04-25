@@ -34,8 +34,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
-                android:text="Property Name"
-                android:textColor="#000"
+                android:text="Pending..."
+                android:textColor="@color/colorStatusPending"
                 android:textSize="14dp" />
 
             <ImageView

@@ -1,11 +1,8 @@
-package src.Views;
+package src.Views.consult;
 
 import android.content.Context;
-import android.util.AttributeSet;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -19,6 +16,7 @@ import java.util.Map;
 
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
+import src.Views.menu.PatientMenuView;
 
 public class PatientCreateConsultView extends ConsultView {
     private TreeNode root;
@@ -32,16 +30,9 @@ public class PatientCreateConsultView extends ConsultView {
     public PatientCreateConsultView(Context context) {
         super(context);
         selectedSymptoms = new HashMap<>();
-        LinearLayout symptom_description_layout = findViewById(R.id.symptom_description_layout);
-        LinearLayout symptom_tree = findViewById(R.id.symptom_layout);
+        LinearLayout symptom_tree = findViewById(R.id.symptom_tree);
 
-        LinearLayout menu_container = findViewById(R.id.menu_container);
-        PatientMenuView patient_menu = new PatientMenuView(getContext(), null);
-        patient_menu.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        menu_container.addView(patient_menu);
-
-//        ((EditText)findViewById(R.id.symptom_description_editbox)).setClickable(false);
-//        ((EditText)findViewById(R.id.symptom_description_editbox)).setFocusable(false);
+        createMenuView();
 
         root = createSymptomTree();
 
@@ -64,15 +55,15 @@ public class PatientCreateConsultView extends ConsultView {
             }
         });
 
-        ImageView bg_image = findViewById(R.id.consult_background_image);
+        findViewById(R.id.comment_section).setVisibility(GONE);
+    }
 
-        bg_image.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                int i = 0;
-
-            }
-        });
+    @Override
+    public void createMenuView() {
+        LinearLayout menu_container = findViewById(R.id.menu_container);
+        PatientMenuView patient_menu = new PatientMenuView(getContext(), null);
+        patient_menu.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        menu_container.addView(patient_menu);
     }
 
     private TreeNode createSymptomTree(){

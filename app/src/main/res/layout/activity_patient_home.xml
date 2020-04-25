@@ -95,23 +95,32 @@
         android:background="#cacaca"/>
 
 
-        <android.support.v7.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#f5f5f5"
-    android:elevation="1dp"
-    android:paddingBottom="60dp"
-    android:clipToPadding="false"
-    android:id="@+id/recyclerView">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="90dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#f5f5f5"
+                android:paddingBottom="60dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:id="@+id/consult_list">
+                <!--<include layout="@layout/consultation_card_view"/>-->
+                <!--<include layout="@layout/consultation_card_view"/>-->
+
+            </LinearLayout>
+        </ScrollView>
 
 
 
 
-</android.support.v7.widget.RecyclerView>s
-    </LinearLayout>
 
-    <src.Views.PatientMenuView
+</LinearLayout>
+
+    <src.Views.menu.PatientMenuView
         android:layout_height="match_parent"
-        android:layout_width="match_parent"></src.Views.PatientMenuView>
+        android:layout_width="match_parent"></src.Views.menu.PatientMenuView>
 
 </RelativeLayout>

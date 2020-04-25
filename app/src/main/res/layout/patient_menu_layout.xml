@@ -36,17 +36,16 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:orientation="vertical">
-
+s
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_blue_home" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_home" />
 
                 <src.customfonts.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Home"
-                    android:textColor="#2ebcff" />
+                    android:text="Home" />
             </LinearLayout>
 
             <LinearLayout
@@ -109,6 +108,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/profile_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -117,14 +117,14 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_setting" />
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/ic_profile_icon" />
 
                 <src.customfonts.MyTextView_Roboto_Regular
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Settings" />
+                    android:text="Profile" />
             </LinearLayout>
         </LinearLayout>
 

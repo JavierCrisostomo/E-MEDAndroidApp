@@ -35,35 +35,35 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        HomeActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
-
-       refine=(TextView)findViewById(R.id.refine);
-        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
-
-
-        refine.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               Intent intent = new Intent(HomeActivity.this, PropertyDetailsActivity.class);
-               startActivity(intent);
-           }
-       });
-
-        homeListModelClassArrayList = new ArrayList<>();
-
-        for (int i = 0; i < propertyName.length; i++) {
-            PropertyRecyclerModel beanClassForRecyclerView_contacts = new PropertyRecyclerModel(propertyName[i], street1[i],street2[i],amount[i],bedcount[i],carParking[i],swimmingpool[i]);
-
-            homeListModelClassArrayList.add(beanClassForRecyclerView_contacts);
-        }
-        mAdapter = new PropertyRecyclerAdapter(HomeActivity.this,homeListModelClassArrayList);
-
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(HomeActivity.this
-        );
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(mAdapter);
+//        setContentView(R.layout.activity_home);
+//        HomeActivity.this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+//
+//       refine=(TextView)findViewById(R.id.refine);
+//        recyclerView = (RecyclerView)findViewById(R.id.recyclerView);
+//
+//
+//        refine.setOnClickListener(new View.OnClickListener() {
+//           @Override
+//           public void onClick(View view) {
+//               Intent intent = new Intent(HomeActivity.this, PropertyDetailsActivity.class);
+//               startActivity(intent);
+//           }
+//       });
+//
+//        homeListModelClassArrayList = new ArrayList<>();
+//
+//        for (int i = 0; i < propertyName.length; i++) {
+//            PropertyRecyclerModel beanClassForRecyclerView_contacts = new PropertyRecyclerModel(propertyName[i], street1[i],street2[i],amount[i],bedcount[i],carParking[i],swimmingpool[i]);
+//
+//            homeListModelClassArrayList.add(beanClassForRecyclerView_contacts);
+//        }
+//        mAdapter = new PropertyRecyclerAdapter(HomeActivity.this,homeListModelClassArrayList);
+//
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(HomeActivity.this
+//        );
+//        recyclerView.setLayoutManager(mLayoutManager);
+//        recyclerView.setItemAnimator(new DefaultItemAnimator());
+//        recyclerView.setAdapter(mAdapter);
 
     }
 
