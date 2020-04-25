@@ -81,23 +81,18 @@
                                 app:civ_border_color="#00000000"
                                 app:civ_border_width="2dp" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:orientation="vertical">
 
                                 <src.customfonts.MyTextView_Roboto_Regular
                                     android:id="@+id/patient_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginLeft="10dp"
                                     android:layout_marginTop="2dp"
                                     android:text="Ionut Popescu"
                                     android:textColor="#222"
                                     android:textSize="20dp" />
 
-
-                            </LinearLayout>
                         </LinearLayout>
 
                         <LinearLayout

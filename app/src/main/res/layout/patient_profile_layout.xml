@@ -68,7 +68,7 @@
                                 android:layout_marginLeft="30dp"
                                 android:text="Ionut Popescu"
                                 android:textColor="#222"
-                                android:textSize="30dp" />
+                                android:textSize="26dp" />
                             <ImageView
                                 android:id="@+id/profile_name_edit"
                                 android:layout_width="25dp"
@@ -86,11 +86,13 @@
                                 <ImageView
                                     android:layout_width="30dp"
                                     android:layout_height="30dp"
-                                    android:src="@drawable/gender" />
+                                    android:layout_gravity="center_vertical"
+                                    android:src="@drawable/ic_health_card" />
 
-                                <src.customfonts.MyTextView_Roboto_Regular
-                                    android:id="@+id/patient_genders"
+                                <src.customfonts.EditText_Roboto_Regular
+                                    android:id="@+id/patient_health_card_number"
                                     android:layout_width="wrap_content"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
                                     android:layout_marginTop="3dp"
@@ -116,8 +118,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp">
                             <ImageView
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_width="30dp"
+                                android:layout_height="30dp"
                                 android:layout_marginLeft="10dp"
                                 android:src="@drawable/ic_phone" />
 
@@ -129,7 +131,7 @@
                                 android:layout_marginLeft="20dp"
                                 android:layout_marginTop="0dp"
                                 android:text="+40712345678"
-                                android:textSize="20dp" />
+                                android:textSize="16dp" />
                             <ImageView
                                 android:id="@+id/profile_phone_edit"
                                 android:layout_width="25dp"
@@ -144,8 +146,8 @@
                             android:layout_height="wrap_content"
                             android:layout_margin="10dp">
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
                             android:layout_marginLeft="10dp"
                             android:src="@drawable/ic_mail" />
 
@@ -156,7 +158,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="20dp"
                             android:text="ionut.popescu@gmail.com"
-                            android:textSize="20dp" />
+                            android:textSize="16dp" />
                             <ImageView
                                 android:id="@+id/profile_email_edit"
                                 android:layout_width="25dp"

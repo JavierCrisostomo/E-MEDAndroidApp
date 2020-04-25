@@ -1,20 +1,30 @@
 package src.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 
-import e.wolfsoft1.src.R;
-import src.Views.consult.ConsultView;
-import src.Views.consult.PatientCreateConsultView;
 import src.Views.profile.PatientProfileView;
+import src.domain.PacientProfileDto;
+import src.service.impl.PacientProfileServiceMock;
+import src.service.interfaces.IProfileService;
 
 public class PatientProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        PatientProfileView patientProfileView = new PatientProfileView(getApplicationContext());
+        IProfileService profileService = new PacientProfileServiceMock();
+        Intent intent = getIntent();
+        String userKey = "";
+        try{
+            userKey = intent.getExtras().get("UserKey").toString();
+        }catch (NullPointerException e){
+            e.printStackTrace();
+        }
+        PacientProfileDto profile = profileService.getProfile(userKey);
+
+        PatientProfileView patientProfileView = new PatientProfileView(getApplicationContext(), profile);
         setContentView(patientProfileView);
     }
 }

@@ -57,7 +57,7 @@ public class PatientHomeActivity extends HomeActivity {
         consult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), ViewConsultWithCommentsActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CommentsEditableConsultActivity.class);
                 getApplicationContext().startActivity(intent);
             }
         });
