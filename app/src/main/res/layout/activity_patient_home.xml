@@ -107,11 +107,11 @@
 
 
 
-</android.support.v7.widget.RecyclerView>
+</android.support.v7.widget.RecyclerView>s
     </LinearLayout>
 
-    <src.Views.MenuView
+    <src.Views.PatientMenuView
         android:layout_height="match_parent"
-        android:layout_width="match_parent"></src.Views.MenuView>
+        android:layout_width="match_parent"></src.Views.PatientMenuView>
 
 </RelativeLayout>

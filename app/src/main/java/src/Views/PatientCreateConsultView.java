@@ -1,11 +1,14 @@
 package src.Views;
 
 import android.content.Context;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import com.unnamed.b.atv.model.TreeNode;
@@ -17,7 +20,7 @@ import java.util.Map;
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 
-public class CreateConsultView extends ConsultView {
+public class PatientCreateConsultView extends ConsultView {
     private TreeNode root;
     private static int sympton_id_counter = 0;
     private Map<Integer, View> selectedSymptoms;
@@ -26,14 +29,19 @@ public class CreateConsultView extends ConsultView {
         return root;
     }
 
-    public CreateConsultView(Context context) {
+    public PatientCreateConsultView(Context context) {
         super(context);
         selectedSymptoms = new HashMap<>();
         LinearLayout symptom_description_layout = findViewById(R.id.symptom_description_layout);
         LinearLayout symptom_tree = findViewById(R.id.symptom_layout);
 
-        ((EditText)findViewById(R.id.symptom_description_editbox)).setClickable(false);
-        ((EditText)findViewById(R.id.symptom_description_editbox)).setFocusable(false);
+        LinearLayout menu_container = findViewById(R.id.menu_container);
+        PatientMenuView patient_menu = new PatientMenuView(getContext(), null);
+        patient_menu.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        menu_container.addView(patient_menu);
+
+//        ((EditText)findViewById(R.id.symptom_description_editbox)).setClickable(false);
+//        ((EditText)findViewById(R.id.symptom_description_editbox)).setFocusable(false);
 
         root = createSymptomTree();
 

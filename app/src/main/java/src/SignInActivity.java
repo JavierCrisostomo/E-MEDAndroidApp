@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import e.wolfsoft1.src.R;
+import src.activities.HomeActivity;
+import src.activities.PatientHomeActivity;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -21,7 +23,7 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent =new Intent(SignInActivity.this,HomeActivity.class);
+                Intent intent =new Intent(SignInActivity.this, PatientHomeActivity.class);
                 startActivity(intent);
             }
         });

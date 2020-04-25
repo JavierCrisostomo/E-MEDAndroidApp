@@ -56,20 +56,49 @@
                                 android:layout_weight="1"
                                 android:text="Consult Request"
                                 android:textColor="#000"
-                                android:textSize="18dp" />
+                                android:textSize="22dp" />
 
                         </LinearLayout>
 
-
                         <src.customfonts.MyTextView_Roboto_Regular
-                            android:id="@+id/patient_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="8dp"
-                            android:text="Ionut Popescu"
-                            android:textColor="#444"
+                            android:layout_marginTop="15dp"
+                            android:paddingLeft="10dp"
+                            android:text="Patient details"
+                            android:textColor="#555"
                             android:textSize="14dp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent">
+                            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/patient_profile_image"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="5dp"
+                                android:src="@drawable/property"
+                                app:civ_border_color="#00000000"
+                                app:civ_border_width="2dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical">
+
+                                <src.customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/patient_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_marginTop="2dp"
+                                    android:text="Ionut Popescu"
+                                    android:textColor="#222"
+                                    android:textSize="20dp" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -371,9 +400,9 @@
         </ScrollView>
     </LinearLayout>
 
-    <src.Views.MenuView
+    <LinearLayout
+        android:id="@+id/menu_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="500dp"
-        android:layout_marginBottom="0dp"></src.Views.MenuView>
+        android:orientation="horizontal"></LinearLayout>
 </RelativeLayout>

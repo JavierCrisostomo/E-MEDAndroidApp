@@ -22,7 +22,10 @@
             android:value="AIzaSyAq0LRjY-WEAKoQ4mPhFOeu4S_9Cte1-M0" /> <!-- Required to show current location -->
         <activity android:name="src.MainActivity"></activity>
         <activity android:name="src.SignInActivity" />
-        <activity android:name="src.HomeActivity" />
+
+        <activity android:name="src.activities.HomeActivity" />
+        <activity android:name="src.activities.PatientHomeActivity" />
+
         <activity android:name="src.PropertyDetailsActivity" />
         <activity android:name="src.FirstActivity">
             <intent-filter>

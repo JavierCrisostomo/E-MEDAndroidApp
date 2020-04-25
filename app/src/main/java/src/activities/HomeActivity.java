@@ -1,4 +1,4 @@
-package src;
+package src.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,21 +15,22 @@ import java.util.ArrayList;
 import src.Adapters.PropertyRecyclerAdapter;
 import src.ModelClasses.PropertyRecyclerModel;
 import e.wolfsoft1.src.R;
+import src.PropertyDetailsActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ArrayList<PropertyRecyclerModel> homeListModelClassArrayList;
-    private RecyclerView recyclerView;
-    private PropertyRecyclerAdapter mAdapter;
+    protected ArrayList<PropertyRecyclerModel> homeListModelClassArrayList;
+    protected RecyclerView recyclerView;
+    protected PropertyRecyclerAdapter mAdapter;
     TextView refine;
 
-    private String propertyName[]={"Property Name","Property Name","Property Name"};
-    private String street1[]={"14 Street/3rd Block","14 Street/3rd Block","14 Street/3rd Block"};
-    private String street2[]={"Super Build-up Area:1060 Sq.Ft","Super Build-up Area:1060 Sq.Ft","Super Build-up Area:1060 Sq.Ft"};
-    private String amount[]={"$2200","$2200","$2200"};
-    private String bedcount[]={"3","3","3"};
-    private String carParking[]={"1","1","1"};
-    private String swimmingpool[]={"1","1","1"};
+    protected String propertyName[]={"Property Name","Property Name","Property Name"};
+    protected String street1[]={"14 Street/3rd Block","14 Street/3rd Block","14 Street/3rd Block"};
+    protected String street2[]={"Super Build-up Area:1060 Sq.Ft","Super Build-up Area:1060 Sq.Ft","Super Build-up Area:1060 Sq.Ft"};
+    protected String amount[]={"$2200","$2200","$2200"};
+    protected String bedcount[]={"3","3","3"};
+    protected String carParking[]={"1","1","1"};
+    protected String swimmingpool[]={"1","1","1"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         refine.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               Intent intent = new Intent(HomeActivity.this,PropertyDetailsActivity.class);
+               Intent intent = new Intent(HomeActivity.this, PropertyDetailsActivity.class);
                startActivity(intent);
            }
        });
