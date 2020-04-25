@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!--Defined by me-->
+    <color name="colorPrimarySkyBlue">#2facff</color>
+    <color name="colorPrimarySkyBlueDark">#2892D5</color>
+    <color name="colorPrimarySkyBlueDarker">#246696</color>
+    <color name="colorPrimarySkyBlueLight">#4DB3FC</color>
+    <color name="colorPrimarySkyBlueLighter">#6EC3FF</color>
+
+
+    <color name="colorSecondaryLightBlue">#C6EAFF</color>
+
+    <color name="colorSecondaryOrange">#FF8B0E</color>
+    <color name="colorSecondaryOrangeDark">#B3640A</color>
+    <color name="colorSecondaryOrangeDarker">#754207</color>
+    <color name="colorSecondaryOrangeLight">#FCA13F</color>
+    <color name="colorSecondaryOrangeLighter">#FCB468</color>
+
+
+
+
+    <color name="colorAccent">#a2a2a2</color>
+    <color name="subText">#a2a2a2</color>
+    <color name="mainText">#454545</color>
+</resources>
