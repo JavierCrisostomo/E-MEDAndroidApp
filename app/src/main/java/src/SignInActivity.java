@@ -6,12 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import org.json.JSONObject;
 
+import e.wolfsoft1.src.R;
 import src.activities.HomeActivity;
 import src.activities.PatientHomeActivity;
 import src.service.impl.UserService;
@@ -45,11 +47,14 @@ public class SignInActivity extends AppCompatActivity {
         public void onResponse(JSONObject response) {
             Intent intent =new Intent(SignInActivity.this, PatientHomeActivity.class);
             startActivity(intent);
+            Toast toast = Toast.makeText(getBaseContext(), "Login successful!", Toast.LENGTH_LONG);
+            toast.show();
         }
 
         @Override
         public void onError(ANError anError) {
-//            ((EditText) findViewById(R.id.username_editbox)).setBackgroundResource(R.drawable.editbox_error_background);
+            Toast toast = Toast.makeText(getBaseContext(), "Login failed!", Toast.LENGTH_LONG);
+            toast.show();
         }
     };
 }

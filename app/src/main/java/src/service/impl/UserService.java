@@ -9,7 +9,6 @@ import com.androidnetworking.interfaces.OkHttpResponseListener;
 import org.json.JSONObject;
 
 import okhttp3.Response;
-import src.R;
 import src.service.interfaces.IUserService;
 
 public class UserService implements IUserService {
@@ -21,7 +20,7 @@ public class UserService implements IUserService {
 
     @Override
     public void loginUser(String username, String password, JSONObjectRequestListener loginResponseListener) {
-         AndroidNetworking.post(server_address + "/res-auth/login")
+         AndroidNetworking.post(server_address + "/rest-auth/login/")
                 .addBodyParameter("username", username)
                 .addBodyParameter("password", password)
                 .setPriority(Priority.MEDIUM)
