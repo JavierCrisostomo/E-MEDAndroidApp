@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 26
     defaultConfig {
-        applicationId "e.wolfsoft1.scanhome"
+        applicationId "src"
         minSdkVersion 15
         targetSdkVersion 26
         versionCode 1
@@ -17,7 +17,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
+}s
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
@@ -27,6 +27,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:design:22.2.0'
+    compile 'com.android.support:multidex:1.0.1'
     implementation 'com.android.support:design:26.1.0'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.google.android.gms:play-services-auth:11.4.2'
@@ -36,4 +37,5 @@ dependencies {
     implementation 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     implementation 'com.github.bmelnychuk:atv:1.2.+'
     implementation 'com.google.android:flexbox:1.0.0'
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
 }

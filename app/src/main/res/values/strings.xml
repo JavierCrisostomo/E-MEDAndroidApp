@@ -1,5 +1,8 @@
 <resources>
+
     <string name="app_name">E-MED</string>
+    <string name="server_host">http://e-med-app.herokuapp.com</string>
+
     <string name="description">Businesses often become known today through effective
 marketing. The marketing may be in the form of a regular
 news item or half column society news in the Sunday

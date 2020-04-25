@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="e.wolfsoft1.src">
+    package="src">
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -20,20 +21,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyAq0LRjY-WEAKoQ4mPhFOeu4S_9Cte1-M0" /> <!-- Required to show current location -->
-        <activity android:name="src.MainActivity"></activity>
-        <activity android:name="src.SignInActivity" />
-
-        <activity android:name="src.activities.HomeActivity" />
-        <activity android:name="src.activities.PatientHomeActivity" />
-
-        <activity android:name="src.PropertyDetailsActivity" />
-        <activity android:name="src.FirstActivity">
+        <activity android:name="src.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="src.SignInActivity" />
+
+        <activity android:name="src.activities.HomeActivity" />
+        <activity android:name="src.activities.PatientHomeActivity" />
+
+        <activity android:name="src.PropertyDetailsActivity" />
+        <activity android:name="src.FirstActivity"/>
     </application>
 
 </manifest>
