@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import e.wolfsoft1.src.R;
 import src.activities.HomeActivity;
 import src.activities.PatientHomeActivity;
+import src.domain.LocalStorage;
 import src.service.impl.UserService;
 import src.service.interfaces.IUserService;
 
@@ -45,9 +46,10 @@ public class SignInActivity extends AppCompatActivity {
                 } else {
                     try {
                         String userKey = loginResponse.get("key").toString();
-                        // pass userkey to hoem activity
+                        // pass userkey to home activity
                         Intent intent = new Intent(SignInActivity.this, PatientHomeActivity.class);
                         intent.putExtra("UserKey", userKey);
+                        LocalStorage.setUserKey(userKey);
                         startActivity(intent);
 
                     } catch (JSONException e) {

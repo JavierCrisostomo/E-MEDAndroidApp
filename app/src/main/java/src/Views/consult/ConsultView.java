@@ -7,28 +7,26 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.unnamed.b.atv.model.TreeNode;
-import com.unnamed.b.atv.view.AndroidTreeView;
 
 import java.io.ByteArrayOutputStream;
 
 import e.wolfsoft1.src.R;
-import src.ViewHolders.SymptomViewHolder;
-import src.domain.PacientProfileDto;
+import src.Views.menu.ViewWithMenu;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
 
-public abstract class ConsultView extends RelativeLayout {
+public abstract class ConsultView extends ViewWithMenu {
 
     protected LayoutInflater inflater;
-    protected PacientProfileDto pacient_profile;
+    protected PatientProfileDto pacient_profile;
 
 
 
-    public ConsultView(Context context) {
+    public ConsultView(Context context, PatientProfileDto profile) {
         super(context);
+        this.pacient_profile = profile;
 
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.consultation_layout, this, true);
@@ -36,9 +34,7 @@ public abstract class ConsultView extends RelativeLayout {
 //        LinearLayout symptom_description_layout = findViewById(R.id.symptom_description_layout);
 //        symptom_description_layout.setVisibility(GONE);
 
-
-
-
+        findViewById(R.id.doctor_details).setVisibility(GONE);
     }
 
     public abstract void createMenuView();

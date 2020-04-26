@@ -1,42 +1,29 @@
 package src.domain;
 
+import android.os.Build;
+import android.support.annotation.RequiresApi;
+
 import java.io.Serializable;
 import java.util.Objects;
 
-public class PacientProfileDto implements Serializable {
+public class ProfileDto implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
     private String phone;
     private String photo;
-    private String healthCardNumber;
 
 
-    public PacientProfileDto() {
+    public ProfileDto() {
     }
 
-    public PacientProfileDto(String firstName, String lastName, String email, String phone) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-    }
 
-    public PacientProfileDto(String firstName, String lastName, String email, String phone, String photo) {
+    public ProfileDto(String firstName, String lastName, String email, String phone, String photo) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.photo = photo;
-    }
-
-    public PacientProfileDto(String firstName, String lastName, String email, String phone, String photo, String healthCardNumber) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.phone = phone;
-        this.photo = photo;
-        this.healthCardNumber = healthCardNumber;
     }
 
     public String getPhoto() {
@@ -79,27 +66,22 @@ public class PacientProfileDto implements Serializable {
         this.phone = phone;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        PacientProfileDto that = (PacientProfileDto) o;
+        ProfileDto that = (ProfileDto) o;
         return Objects.equals(firstName, that.firstName) &&
                 Objects.equals(lastName, that.lastName) &&
                 Objects.equals(email, that.email) &&
-                Objects.equals(phone, that.phone);
+                Objects.equals(phone, that.phone) &&
+                Objects.equals(photo, that.photo);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName, email, phone);
-    }
-
-    public String getHealthCardNumber() {
-        return healthCardNumber;
-    }
-
-    public void setHealthCardNumber(String healthCardNumber) {
-        this.healthCardNumber = healthCardNumber;
+        return Objects.hash(firstName, lastName, email, phone, photo);
     }
 }

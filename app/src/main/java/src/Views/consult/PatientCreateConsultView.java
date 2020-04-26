@@ -3,9 +3,7 @@ package src.Views.consult;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.SearchView;
 
 import com.unnamed.b.atv.model.TreeNode;
@@ -17,7 +15,8 @@ import java.util.Map;
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 import src.Views.menu.PatientMenuView;
-import src.domain.PacientProfileDto;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
 
 public class PatientCreateConsultView extends ConsultView {
     private TreeNode root;
@@ -28,9 +27,8 @@ public class PatientCreateConsultView extends ConsultView {
         return root;
     }
 
-    public PatientCreateConsultView(Context context, PacientProfileDto profile) {
-        super(context);
-        this.pacient_profile = profile;
+    public PatientCreateConsultView(Context context, PatientProfileDto profile) {
+        super(context, profile);
         selectedSymptoms = new HashMap<>();
         LinearLayout symptom_tree = findViewById(R.id.symptom_tree);
 
@@ -59,6 +57,8 @@ public class PatientCreateConsultView extends ConsultView {
         });
 
         findViewById(R.id.comment_section).setVisibility(GONE);
+        findViewById(R.id.doctor_details).setVisibility(GONE);
+
     }
 
     @Override
@@ -100,10 +100,28 @@ public class PatientCreateConsultView extends ConsultView {
 
     private boolean filterSymptonNodeForText(TreeNode node, String text){
         boolean no_child_fits = true;
+        boolean self_fit = false;
+
+        if(!node.equals(root))
+            if(((SymptomViewHolder.IconTreeItem) node.getValue()).text.toLowerCase().contains(text.toLowerCase())){
+                node.getViewHolder().getView().setVisibility(VISIBLE);
+                self_fit = true;
+
+                TreeNode parent = node;
+                while(parent != null){
+                    parent.setExpanded(true);
+                    parent.getViewHolder().getTreeView().expandNode(parent);
+                    if(!parent.equals(root)){
+                        parent.getViewHolder().getView().setVisibility(VISIBLE);
+                    }
+                    parent = parent.getParent();
+                }
+            }
+
 
         for(TreeNode child: node.getChildren()){
             if(child.isLeaf()){
-                if(! ((SymptomViewHolder.IconTreeItem) child.getValue()).text.contains(text)){
+                if(! ((SymptomViewHolder.IconTreeItem) child.getValue()).text.toLowerCase().contains(text.toLowerCase())){
                     child.getViewHolder().getView().setVisibility(GONE);
                 }
                 else{
@@ -122,11 +140,11 @@ public class PatientCreateConsultView extends ConsultView {
                 }
             }
             else{
-                no_child_fits = filterSymptonNodeForText(child, text);
+                    no_child_fits =  filterSymptonNodeForText(child, text);
             }
         }
 
-        if(no_child_fits){
+        if(no_child_fits && !self_fit){
             if(!node.equals(root) && node.getViewHolder() != null && node.getViewHolder().getView() != null){
                 node.getViewHolder().getView().setVisibility(GONE);
             }

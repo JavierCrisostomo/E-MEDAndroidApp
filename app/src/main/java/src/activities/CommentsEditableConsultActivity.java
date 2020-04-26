@@ -8,8 +8,11 @@ import android.support.v7.app.AppCompatActivity;
 import e.wolfsoft1.src.R;
 import src.Views.consult.CommentsEditableConsultView;
 import src.Views.consult.ConsultView;
-import src.Views.consult.PatientCreateConsultView;
-import src.domain.PacientProfileDto;
+import src.domain.DoctorProfileDto;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
+import src.service.impl.DoctorProfileServiceMock;
+import src.service.interfaces.IDoctorProfileService;
 
 public class CommentsEditableConsultActivity extends AppCompatActivity {
     @Override
@@ -17,16 +20,19 @@ public class CommentsEditableConsultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consult);
 
-        PacientProfileDto profile = new PacientProfileDto();
+        PatientProfileDto profile = new PatientProfileDto();
         Intent intent = getIntent();
         try{
-            profile = (PacientProfileDto) intent.getSerializableExtra("PatientProfile");
+            profile = (PatientProfileDto) intent.getSerializableExtra("PatientProfile");
         }catch (NullPointerException e){
             e.printStackTrace();
         }
 
+        IDoctorProfileService doctorService = new DoctorProfileServiceMock();
+        DoctorProfileDto doctorProfileDto = doctorService.getProfile("");
+
         ConstraintLayout root = findViewById(R.id.consult_root_layout);
-        final ConsultView consultView = new CommentsEditableConsultView(getApplicationContext(), profile);
+        final ConsultView consultView = new CommentsEditableConsultView(getApplicationContext(), profile, doctorProfileDto);
         root.addView(consultView);
     }
 }

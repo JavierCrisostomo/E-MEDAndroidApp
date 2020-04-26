@@ -11,7 +11,7 @@
 
 
     <LinearLayout
-        android:layout_width="371dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
@@ -24,23 +24,24 @@
             app:siShape="@drawable/image_corner" />
 
         <LinearLayout
-            android:layout_width="281dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:visibility="visible">
 
                 <src.customfonts.MyTextView_Roboto_Regular
                     android:id="@+id/propertyName"
-                    android:layout_width="254dp"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_weight="1"
-                    android:text="Property Name"
+                    android:text="Nervous System"
                     android:textColor="#000"
                     android:textSize="14dp" />
 
@@ -51,7 +52,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
                 android:text="14 Street/3rd Block"
                 android:textColor="#A2A2A2"
                 android:textSize="12dp" />

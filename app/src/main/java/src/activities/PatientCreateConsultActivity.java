@@ -2,23 +2,15 @@ package src.activities;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Base64;
-import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.io.ByteArrayOutputStream;
 
 import e.wolfsoft1.src.R;
 import src.Views.consult.ConsultView;
 import src.Views.consult.PatientCreateConsultView;
-import src.domain.PacientProfileDto;
-import src.service.impl.PacientProfileServiceMock;
-import src.service.interfaces.IProfileService;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
 
 public class PatientCreateConsultActivity extends AppCompatActivity {
 
@@ -31,10 +23,10 @@ public class PatientCreateConsultActivity extends AppCompatActivity {
         ConstraintLayout root = findViewById(R.id.consult_root_layout);
 
 
-        PacientProfileDto profile = new PacientProfileDto();
+        PatientProfileDto profile = new PatientProfileDto();
         Intent intent = getIntent();
         try{
-            profile = (PacientProfileDto) intent.getSerializableExtra("PatientProfile");
+            profile = (PatientProfileDto) intent.getSerializableExtra("PatientProfile");
         }catch (NullPointerException e){
             e.printStackTrace();
         }

@@ -82,8 +82,8 @@ public class SymptomViewHolder extends TreeNode.BaseNodeViewHolder<SymptomViewHo
         MyTextView_Roboto_Regular chip = new MyTextView_Roboto_Regular(context);
         chip.setText(symptom_name);
         chip.setBackgroundResource(R.drawable.facilities_rect);
-        chip.setPadding(20,20, 20, 20);
-        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
+//        chip.setPadding(20,20, 20, 20);
+//        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
 
         TableRow.LayoutParams chip_layout_params = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         chip_layout_params.setMargins(10, 10, 10, 10);

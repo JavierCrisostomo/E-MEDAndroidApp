@@ -13,7 +13,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginRight="5dp"
-            android:src="@drawable/p3"
+            android:src="@drawable/greg_house"
             app:civ_border_color="#00000000"
             app:civ_border_width="2dp" />
 
@@ -31,9 +31,16 @@
                 android:id="@+id/doctor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dr. John Doe"
+                android:text="Dr. Gregory House"
                 android:textColor="#000"
                 android:textSize="14dp" />
+
+            <src.customfonts.MyTextView_Roboto_Medium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Doctor"
+                android:textColor="#777"
+                android:textSize="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,7 +54,7 @@
                     android:layout_height="wrap_content"
                     android:text="Hello! I would like to know how i could be of service! Where is the pain located?"
                     android:padding="10dp"
-                    android:background="@drawable/send_inq_rect"
+                    android:background="@drawable/send_inq_rect2"
                     android:textColor="#444" />
 
                 <src.customfonts.MyTextView_Roboto_Regular

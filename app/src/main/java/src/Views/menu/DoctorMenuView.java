@@ -12,10 +12,10 @@ import src.activities.PatientHomeActivity;
 import src.activities.PatientProfileActivity;
 import src.domain.ProfileDto;
 
-public class PatientMenuView extends MenuView {
+public class DoctorMenuView extends MenuView {
     private ProfileDto profile;
 
-    public PatientMenuView(Context context, AttributeSet attrs, ProfileDto profile) {
+    public DoctorMenuView(Context context, AttributeSet attrs, ProfileDto profile) {
         super(context, attrs);
         this.profile = profile;
 
@@ -27,7 +27,7 @@ public class PatientMenuView extends MenuView {
         (this.findViewById(R.id.add_consult_btn)).setOnClickListener(new ConsultButtonOnClickListener());
     }
 
-    class HomeButtonOnClickListener implements View.OnClickListener {
+    class HomeButtonOnClickListener implements OnClickListener {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(getContext(), PatientHomeActivity.class);
@@ -35,7 +35,7 @@ public class PatientMenuView extends MenuView {
         }
     }
 
-    class ProfileButtonOnClickListener implements View.OnClickListener {
+    class ProfileButtonOnClickListener implements OnClickListener {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(getContext(), PatientProfileActivity.class);
@@ -44,7 +44,7 @@ public class PatientMenuView extends MenuView {
         }
     }
 
-    class ConsultButtonOnClickListener implements View.OnClickListener {
+    class ConsultButtonOnClickListener implements OnClickListener {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(getContext(), PatientCreateConsultActivity.class);

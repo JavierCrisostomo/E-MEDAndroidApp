@@ -27,6 +27,14 @@
                 android:text="John Doe"
                 android:textColor="#000"
                 android:textSize="14dp" />
+            <src.customfonts.MyTextView_Roboto_Medium
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginRight="5dp"
+                android:text="Patient"
+                android:textColor="#777"
+                android:textSize="12dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:text="Hello! I'm having some pain at the back of my head. It started yesterday"
                     android:padding="10dp"
-                    android:background="@drawable/send_inq_rect2"
+                    android:background="@drawable/send_inq_rect"
                     android:textColor="#444" />
 
 
@@ -63,6 +71,7 @@
             android:id="@+id/patient_profile_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_gravity=""
             android:layout_marginRight="5dp"
             android:src="@drawable/property"
             app:civ_border_color="#00000000"

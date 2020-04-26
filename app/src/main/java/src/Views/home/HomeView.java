@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
@@ -21,13 +20,16 @@ import com.google.android.flexbox.FlexboxLayout;
 import java.io.ByteArrayOutputStream;
 
 import e.wolfsoft1.src.R;
+import src.Views.menu.ViewWithMenu;
+import src.Views.menu.MenuView;
 import src.Views.menu.PatientMenuView;
 import src.activities.CommentsEditableConsultActivity;
 import src.customfonts.MyTextView_Roboto_Regular;
-import src.domain.PacientProfileDto;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
 
-public class HomeView extends RelativeLayout {
-    private PacientProfileDto profile;
+public abstract class HomeView extends ViewWithMenu {
+    protected ProfileDto profile;
     protected LayoutInflater inflater;
 
 
@@ -37,50 +39,21 @@ public class HomeView extends RelativeLayout {
 
 
     @SuppressLint("WrongThread")
-    public HomeView(Context context, AttributeSet attrs, PacientProfileDto profile) {
+    public HomeView(Context context, AttributeSet attrs, ProfileDto profile) {
         super(context, attrs);
         this.profile = profile;
 
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        inflater.inflate(R.layout.activity_patient_home, this, true);
-
-        createMenuView();
-
-        ((TextView) findViewById(R.id.patient_name)).setText(profile.getFirstName() + " " + profile.getLastName());
-        ((TextView) findViewById(R.id.patient_email)).setText(profile.getEmail());
-        ((TextView) findViewById(R.id.patient_phone)).setText(profile.getPhone());
-        ((TextView) findViewById(R.id.patient_health_card_number)).setText(profile.getHealthCardNumber());
-
-        ImageView profile_image = findViewById(R.id.patient_profile_image);
-
-        //encode image to base64 string
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.p3);
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
-        byte[] imageBytes = baos.toByteArray();
-        String imageString = Base64.encodeToString(imageBytes, Base64.DEFAULT);
-
-        //decode base64 string to image
-//        imageBytes = Base64.decode(profile.getPhoto(), Base64.DEFAULT);
-        imageBytes = Base64.decode(imageString, Base64.DEFAULT);
-        Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
-        profile_image.setImageBitmap(decodedImage);
 
 
-        LinearLayout consultList = findViewById(R.id.consult_list);
-
-        for(int i = 0; i < consultStatus.length; i++ ){
-            View consult = creatConsultCard(consultStatus[i], consultDates[i], consultSymptoms[i]);
-            consultList.addView(consult);
-        }
     }
 
-    private TextView createChip(CharSequence symptom_name, Context context) {
+    protected TextView createChip(CharSequence symptom_name, Context context) {
         MyTextView_Roboto_Regular chip = new MyTextView_Roboto_Regular(context);
         chip.setText(symptom_name);
         chip.setBackgroundResource(R.drawable.facilities_rect);
-        chip.setPadding(20,20, 20, 20);
-        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
+//        chip.setPadding(20,20, 20, 20);
+//        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
 
         TableRow.LayoutParams chip_layout_params = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         chip_layout_params.setMargins(10, 10, 10, 10);
@@ -88,14 +61,9 @@ public class HomeView extends RelativeLayout {
         return chip;
     }
 
-    public void createMenuView() {
-        LinearLayout menu_container = findViewById(R.id.menu_container);
-        PatientMenuView patient_menu = new PatientMenuView(getContext(), null, profile);
-        patient_menu.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        menu_container.addView(patient_menu);
-    }
 
-    private View creatConsultCard(String consultStatus, String consultDate, String consultSymptom) {
+
+    protected View creatConsultCard(String consultStatus, String consultDate, String consultSymptom) {
 
         View consult = inflater.inflate(R.layout.consultation_card_view, null);
 
@@ -123,6 +91,5 @@ public class HomeView extends RelativeLayout {
 
         return consult;
     }
-
 
 }

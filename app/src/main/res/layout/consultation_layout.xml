@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     tools:context="src.PropertyDetailsActivity">
 
     <LinearLayout
@@ -33,15 +35,64 @@
                         android:layout_height="wrap_content"
                         android:background="#ffffff"
                         android:orientation="vertical"
-                        android:backgroundTint="@color/colorPrimarySkyBlueLighter"
-                        android:paddingBottom="10dp">
+                        android:backgroundTint="@color/colorPrimarySkyBlueLighter">
 
-                        <ImageView
-                            android:id="@+id/consult_background_image"
-                            android:layout_width="wrap_content"
-                            android:layout_height="80dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/consult_background"/>
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <ImageView
+                                android:id="@+id/consult_background_image"
+                                android:layout_width="wrap_content"
+                                android:layout_height="80dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/consult_background"/>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="right">
+                                <LinearLayout
+                                    android:id="@+id/consult_date"
+                                    android:layout_width="wrap_content"
+                                    android:minWidth="70dp"
+                                    android:gravity="center"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical">
+
+                                    <src.customfonts.MyTextView_Roboto_Regular
+                                        android:id="@+id/consult_date_day"
+                                        android:layout_gravity="center"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="14"
+                                        android:textColor="@color/colorPrimarySkyBlue"
+                                        android:textSize="20dp" />
+
+                                    <src.customfonts.MyTextView_Roboto_Regular
+                                        android:id="@+id/consult_date_month"
+                                        android:layout_gravity="center"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="Aug"
+                                        android:textColor="@color/colorSecondaryOrange"
+                                        android:textSize="16dp" />
+
+                                    <src.customfonts.MyTextView_Roboto_Regular
+                                        android:id="@+id/consult_date_year"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center"
+                                        android:layout_weight="1"
+                                        android:text="2020"
+                                        android:textColor="@color/colorSecondaryOrangeDarker"
+                                        android:textSize="16dp" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -58,28 +109,35 @@
                                 android:textColor="#000"
                                 android:textSize="22dp" />
 
+
+
                         </LinearLayout>
 
-                        <src.customfonts.MyTextView_Roboto_Regular
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="15dp"
-                            android:paddingLeft="10dp"
-                            android:text="Patient details"
-                            android:textColor="#555"
-                            android:textSize="14dp" />
-
                         <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent">
-                            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                                android:id="@+id/patient_profile_image"
-                                android:layout_width="70dp"
-                                android:layout_height="70dp"
-                                android:layout_margin="5dp"
-                                android:src="@drawable/property"
-                                app:civ_border_color="#00000000"
-                                app:civ_border_width="2dp" />
+                            android:id="@+id/patient_details"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+                            <src.customfonts.MyTextView_Roboto_Regular
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:paddingLeft="10dp"
+                                android:text="Patient details"
+                                android:textColor="#555"
+                                android:textSize="14dp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent">
+                                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/patient_profile_image"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="5dp"
+                                    android:src="@drawable/property"
+                                    app:civ_border_color="#00000000"
+                                    app:civ_border_width="2dp" />
 
 
                                 <src.customfonts.MyTextView_Roboto_Regular
@@ -93,78 +151,196 @@
                                     android:textColor="#222"
                                     android:textSize="20dp" />
 
+                                <com.google.android.flexbox.FlexboxLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="10dp"
+                                    app:alignContent="stretch"
+                                    app:alignItems="stretch"
+                                    app:flexWrap="wrap"
+                                    >
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_phone" />
+
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/patient_phone"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="0dp"
+                                            android:text="+40712345678"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_mail" />
+
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/patient_email"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="0dp"
+                                            android:text="ionut.popescu@gmail.com"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_health_card" />
+
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/patient_health_card_number"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="3dp"
+                                            android:text="1223355"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
+
+
+                                </com.google.android.flexbox.FlexboxLayout>
+
+                            </LinearLayout>
+
+
                         </LinearLayout>
 
-                        <com.google.android.flexbox.FlexboxLayout
+                        <LinearLayout
+                            android:id="@+id/doctor_details"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="5dp"
-                            android:layout_marginTop="10dp"
-                            app:alignContent="stretch"
-                            app:alignItems="stretch"
-                            app:flexWrap="wrap"
-                            >
-                            <LinearLayout
+                            android:orientation="vertical"
+                            android:background="@color/colorSecondaryOrangeLight">
+                            <src.customfonts.MyTextView_Roboto_Regular
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:src="@drawable/ic_phone" />
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="5dp"
+                                android:layout_gravity="right"
+                                android:paddingRight="10dp"
 
-                                <src.customfonts.MyTextView_Roboto_Regular
-                                    android:id="@+id/patient_phone"
+                                android:text="Doctor details"
+                                android:textColor="#555"
+                                android:textSize="14dp" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+                                <LinearLayout
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="0dp"
-                                    android:text="+40712345678"
-                                    android:textSize="12dp" />
-                            </LinearLayout>
+                                    android:layout_marginTop="10dp"
+                                    android:orientation="vertical"
+                                    >
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_phone" />
+
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/doctor_phone"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="0dp"
+                                            android:text="+40712345678"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
 
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
-                                    android:layout_marginLeft="10dp"
-                                    android:src="@drawable/ic_mail" />
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_mail" />
 
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/doctor_email"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="0dp"
+                                            android:text="greg.house@gmail.com"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
+
+
+                                    <LinearLayout
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content">
+                                        <ImageView
+                                            android:layout_width="20dp"
+                                            android:layout_height="20dp"
+                                            android:layout_marginLeft="10dp"
+                                            android:src="@drawable/ic_doctor_speciality" />
+
+                                        <src.customfonts.MyTextView_Roboto_Regular
+                                            android:id="@+id/doctor_speciality"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="5dp"
+                                            android:layout_marginTop="3dp"
+                                            android:text="Diagnostics"
+                                            android:textSize="12dp" />
+                                    </LinearLayout>
+
+
+                                </LinearLayout>
                                 <src.customfonts.MyTextView_Roboto_Regular
-                                    android:id="@+id/patient_email"
+                                    android:id="@+id/doctor_name"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="0dp"
-                                    android:text="ionut.popescu@gmail.com"
-                                    android:textSize="12dp" />
-                            </LinearLayout>
-
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content">
-                                <ImageView
-                                    android:layout_width="20dp"
-                                    android:layout_height="20dp"
+                                    android:layout_gravity="center_vertical"
                                     android:layout_marginLeft="10dp"
-                                    android:src="@drawable/ic_health_card" />
+                                    android:layout_marginTop="2dp"
+                                    android:text="Gregory House"
+                                    android:textColor="#222"
+                                    android:textSize="20dp" />
+                                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                    android:id="@+id/doctor_profile_image"
+                                    android:layout_width="70dp"
+                                    android:layout_height="70dp"
+                                    android:layout_margin="5dp"
+                                    android:src="@drawable/greg_house"
+                                    app:civ_border_color="#00000000"
+                                    app:civ_border_width="2dp" />
 
-                                <src.customfonts.MyTextView_Roboto_Regular
-                                    android:id="@+id/patient_health_card_number"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="5dp"
-                                    android:layout_marginTop="3dp"
-                                    android:text="1223355"
-                                    android:textSize="12dp" />
+
+
                             </LinearLayout>
 
 
-                        </com.google.android.flexbox.FlexboxLayout>
+                        </LinearLayout>
 
                     </LinearLayout>
 
@@ -193,7 +369,9 @@
                                 android:layout_weight="1"
                                 android:text="Symptoms"
                                 android:textColor="#000"
-                                android:textSize="14dp" />
+                                android:textSize="18dp" />
+
+
 
                         </LinearLayout>
 
@@ -201,8 +379,18 @@
                             android:id="@+id/symptom_tree"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:paddingLeft="10dp"
                             android:orientation="vertical"
                             android:paddingBottom="6dp">
+
+                            <src.customfonts.MyTextView_Roboto_Medium
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="15dp"
+                                android:paddingLeft="10dp"
+                                android:text="Add symptoms"
+                                android:textColor="#000"
+                                android:textSize="14dp" />
 
                             <src.customfonts.MyTextView_Roboto_Regular
                                 android:id="@+id/patient_name2"
@@ -210,14 +398,15 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="10dp"
                                 android:layout_marginTop="8dp"
-                                android:text="Search for symptom:"
+                                android:text="Here you can choose your symptoms from a predefined symptom tree hierarchy"
                                 android:textColor="#A2A2A2"
                                 android:textSize="14dp" />
 
                             <SearchView
                                 android:id="@+id/symptom_search"
+                                android:queryHint="Search for a symptom"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
                         </LinearLayout>
 
                     </LinearLayout>
@@ -238,6 +427,14 @@
                             android:text="Selected symptoms"
                             android:textColor="#000"
                             android:textSize="14dp" />
+                        <src.customfonts.MyTextView_Roboto_Regular
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="8dp"
+                            android:text="Here you can your selected symptoms"
+                            android:textColor="#A2A2A2"
+                            android:textSize="14dp" />
 
                         <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
                             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -249,17 +446,6 @@
                             app:alignItems="stretch"
                             app:flexWrap="wrap">
 
-                            <src.customfonts.MyTextView_Roboto_Regular
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:background="@drawable/facilities_rect"
-                                android:backgroundTint="@color/colorSecondaryLightBlue"
-                                android:paddingLeft="7dp"
-                                android:paddingTop="5dp"
-                                android:paddingRight="7dp"
-                                android:paddingBottom="5dp"
-                                android:text="Gym" />
 
                             <src.customfonts.MyTextView_Roboto_Regular
                                 android:layout_width="wrap_content"
@@ -267,24 +453,8 @@
                                 android:layout_marginLeft="10dp"
                                 android:background="@drawable/facilities_rect"
                                 android:backgroundTint="@color/colorSecondaryLightBlue"
-                                android:paddingLeft="7dp"
-                                android:paddingTop="5dp"
-                                android:paddingRight="7dp"
-                                android:paddingBottom="5dp"
+                                android:visibility="gone"
                                 android:text="Club House" />
-
-                            <src.customfonts.MyTextView_Roboto_Regular
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:background="@drawable/facilities_rect"
-                                android:backgroundTint="@color/colorSecondaryLightBlue"
-                                android:paddingLeft="7dp"
-                                android:paddingTop="5dp"
-                                android:paddingRight="7dp"
-                                android:paddingBottom="5dp"
-
-                                android:text="Jogging Track" />
 
                         </com.google.android.flexbox.FlexboxLayout>
 
@@ -317,17 +487,17 @@
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            android:text="Describe your symptom and affection progression as best as you can, for a doctor to better understand your issue"
+                            android:text="Describe your symptoms and affection progression here as best as you can, for a doctor to better understand your issue"
                             android:textColor="@color/subText"
                             android:textSize="14dp" />
 
                         <src.customfonts.EditText_Roboto_Light
                             android:id="@+id/symptom_description_editbox"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:hint="Type your symptom description here"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
-                            android:text="@string/description"
                             android:textSize="14dp" />
 
                     </LinearLayout>
@@ -383,6 +553,7 @@
                             <src.customfonts.EditText_Roboto_Meidum
                                 android:layout_width="wrap_content"
                                 android:minWidth="200dp"
+                                android:hint="Type a new comment"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="30dp"
                                 android:layout_marginRight="10dp"/>

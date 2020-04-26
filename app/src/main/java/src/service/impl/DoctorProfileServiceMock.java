@@ -1,14 +1,15 @@
 package src.service.impl;
 
+import src.domain.DoctorProfileDto;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
+import src.service.interfaces.IDoctorProfileService;
 import src.service.interfaces.IPatientProfileService;
-import src.service.interfaces.IProfileService;
 
-public class PacientProfileServiceMock implements IPatientProfileService {
+public class DoctorProfileServiceMock implements IDoctorProfileService {
     @Override
-    public PatientProfileDto getProfile(String userKey) {
-        return new PatientProfileDto("Ioan", "Grozea", "ionut.popescu@gmail.com", "+407401231234", "", "12345678");
+    public DoctorProfileDto getProfile(String userKey) {
+        return new DoctorProfileDto("Gregory", "House", "g.house@gmail.com", "+55424532513", "", "Orthopedist");
     }
 
     @Override
