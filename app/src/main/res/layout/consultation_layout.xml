@@ -95,59 +95,76 @@
 
                         </LinearLayout>
 
-                        <LinearLayout
+                        <com.google.android.flexbox.FlexboxLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="5dp"
                             android:layout_marginTop="10dp"
-                            android:orientation="horizontal">
-
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginLeft="10dp"
-                                android:src="@drawable/ic_phone" />
-
-                            <src.customfonts.MyTextView_Roboto_Regular
-                                android:id="@+id/patient_phone"
+                            app:alignContent="stretch"
+                            app:alignItems="stretch"
+                            app:flexWrap="wrap"
+                            >
+                            <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="0dp"
-                                android:text="+40712345678"
-                                android:textSize="12dp" />
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:src="@drawable/ic_phone" />
 
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginLeft="20dp"
-                                android:src="@drawable/ic_message" />
+                                <src.customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/patient_phone"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="0dp"
+                                    android:text="+40712345678"
+                                    android:textSize="12dp" />
+                            </LinearLayout>
 
-                            <src.customfonts.MyTextView_Roboto_Regular
-                                android:id="@+id/patient_email"
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="0dp"
-                                android:text="ionut.popescu@gmail.com"
-                                android:textSize="12dp" />
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:src="@drawable/ic_mail" />
 
-                            <ImageView
-                                android:layout_width="20dp"
-                                android:layout_height="20dp"
-                                android:layout_marginLeft="20dp"
-                                android:src="@drawable/gender" />
+                                <src.customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/patient_email"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="0dp"
+                                    android:text="ionut.popescu@gmail.com"
+                                    android:textSize="12dp" />
+                            </LinearLayout>
 
-                            <src.customfonts.MyTextView_Roboto_Regular
-                                android:id="@+id/patient_genders"
+
+                            <LinearLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginTop="3dp"
-                                android:text="Male"
-                                android:textSize="12dp" />
+                                android:layout_height="wrap_content">
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:src="@drawable/ic_health_card" />
 
-                        </LinearLayout>
+                                <src.customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/patient_health_card_number"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginTop="3dp"
+                                    android:text="1223355"
+                                    android:textSize="12dp" />
+                            </LinearLayout>
+
+
+                        </com.google.android.flexbox.FlexboxLayout>
 
                     </LinearLayout>
 
@@ -398,7 +415,7 @@
                             android:gravity="center"
                             android:paddingTop="10dp"
                             android:paddingBottom="10dp"
-                            android:text="Send Enquiry"
+                            android:text="Send Request"
                             android:textColor="#ffffff" />
                     </LinearLayout>
 

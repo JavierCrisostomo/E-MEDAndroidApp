@@ -10,10 +10,14 @@ import e.wolfsoft1.src.R;
 import src.activities.PatientCreateConsultActivity;
 import src.activities.PatientHomeActivity;
 import src.activities.PatientProfileActivity;
+import src.domain.PacientProfileDto;
 
 public class PatientMenuView extends MenuView {
-    public PatientMenuView(Context context, AttributeSet attrs) {
+    private PacientProfileDto profile;
+
+    public PatientMenuView(Context context, AttributeSet attrs, PacientProfileDto profile) {
         super(context, attrs);
+        this.profile = profile;
 
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.patient_menu_layout, this, true);
@@ -35,6 +39,7 @@ public class PatientMenuView extends MenuView {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(getContext(), PatientProfileActivity.class);
+            intent.putExtra("PatientProfile", profile);
             getContext().startActivity(intent);
         }
     }
@@ -43,6 +48,7 @@ public class PatientMenuView extends MenuView {
         @Override
         public void onClick(View view) {
             Intent intent=new Intent(getContext(), PatientCreateConsultActivity.class);
+            intent.putExtra("PatientProfile", profile);
             getContext().startActivity(intent);
         }
     }

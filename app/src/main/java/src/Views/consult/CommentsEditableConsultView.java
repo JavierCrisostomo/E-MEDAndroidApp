@@ -7,6 +7,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
@@ -17,6 +18,7 @@ import java.util.Map;
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 import src.Views.menu.PatientMenuView;
+import src.domain.PacientProfileDto;
 
 public class CommentsEditableConsultView extends ConsultView {
     private TreeNode root;
@@ -27,8 +29,9 @@ public class CommentsEditableConsultView extends ConsultView {
         return root;
     }
 
-    public CommentsEditableConsultView(Context context) {
+    public CommentsEditableConsultView(Context context, PacientProfileDto profile) {
         super(context);
+        this.pacient_profile = profile;
         selectedSymptoms = new HashMap<>();
 
         createMenuView();
@@ -40,12 +43,14 @@ public class CommentsEditableConsultView extends ConsultView {
 
         ((EditText)findViewById(R.id.symptom_description_editbox)).setClickable(false);
         ((EditText)findViewById(R.id.symptom_description_editbox)).setFocusable(false);
+        setupProfileInfo();
+
     }
 
     @Override
     public void createMenuView() {
         LinearLayout menu_container = findViewById(R.id.menu_container);
-        PatientMenuView patient_menu = new PatientMenuView(getContext(), null);
+        PatientMenuView patient_menu = new PatientMenuView(getContext(), null, pacient_profile);
         patient_menu.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         menu_container.addView(patient_menu);
     }

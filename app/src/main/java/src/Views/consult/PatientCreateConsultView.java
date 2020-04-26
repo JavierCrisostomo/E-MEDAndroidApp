@@ -17,6 +17,7 @@ import java.util.Map;
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 import src.Views.menu.PatientMenuView;
+import src.domain.PacientProfileDto;
 
 public class PatientCreateConsultView extends ConsultView {
     private TreeNode root;
@@ -27,12 +28,14 @@ public class PatientCreateConsultView extends ConsultView {
         return root;
     }
 
-    public PatientCreateConsultView(Context context) {
+    public PatientCreateConsultView(Context context, PacientProfileDto profile) {
         super(context);
+        this.pacient_profile = profile;
         selectedSymptoms = new HashMap<>();
         LinearLayout symptom_tree = findViewById(R.id.symptom_tree);
 
         createMenuView();
+        setupProfileInfo();
 
         root = createSymptomTree();
 
@@ -61,7 +64,7 @@ public class PatientCreateConsultView extends ConsultView {
     @Override
     public void createMenuView() {
         LinearLayout menu_container = findViewById(R.id.menu_container);
-        PatientMenuView patient_menu = new PatientMenuView(getContext(), null);
+        PatientMenuView patient_menu = new PatientMenuView(getContext(), null, pacient_profile);
         patient_menu.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         menu_container.addView(patient_menu);
     }

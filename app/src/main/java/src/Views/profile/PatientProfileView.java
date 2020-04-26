@@ -7,13 +7,16 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.io.ByteArrayOutputStream;
 
 import e.wolfsoft1.src.R;
+import src.Views.menu.PatientMenuView;
 import src.domain.PacientProfileDto;
 
 public class PatientProfileView extends RelativeLayout {
@@ -37,6 +40,7 @@ public class PatientProfileView extends RelativeLayout {
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.patient_profile_layout, this, true);
         ImageView image =  findViewById(R.id.patient_profile_image);
+        createMenuView();
 
         //encode image to base64 string
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -112,5 +116,12 @@ public class PatientProfileView extends RelativeLayout {
             editToBeEnabled.requestFocus();
 
         }
-    };
+    }
+
+    public void createMenuView() {
+        LinearLayout menu_container = findViewById(R.id.menu_container);
+        PatientMenuView patient_menu = new PatientMenuView(getContext(), null, profile);
+        patient_menu.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+        menu_container.addView(patient_menu);
+    }
 }
