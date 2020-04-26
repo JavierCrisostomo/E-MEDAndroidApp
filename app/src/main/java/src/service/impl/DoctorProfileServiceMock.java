@@ -9,7 +9,7 @@ import src.service.interfaces.IPatientProfileService;
 public class DoctorProfileServiceMock implements IDoctorProfileService {
     @Override
     public DoctorProfileDto getProfile(String userKey) {
-        return new DoctorProfileDto("Gregory", "House", "g.house@gmail.com", "+55424532513", "", "Orthopedist");
+        return new DoctorProfileDto("Gregory", "House", "gregory.house@gmail.com", "+55424532513", "", "Diagnostician");
     }
 
     @Override

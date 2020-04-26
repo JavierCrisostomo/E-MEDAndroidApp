@@ -17,6 +17,7 @@ import e.wolfsoft1.src.R;
 import src.Views.menu.MenuView;
 import src.Views.menu.PatientMenuView;
 import src.domain.DoctorProfileDto;
+import src.domain.LocalStorage;
 import src.domain.PatientProfileDto;
 
 public class DoctorHomeView extends HomeView {
@@ -35,8 +36,7 @@ public class DoctorHomeView extends HomeView {
 
         ImageView profile_image = findViewById(R.id.doctor_profile_image);
 
-        createConsultList();
-
+        createConsultList(LocalStorage.getDoctorConsults());
     }
 
     @Override
@@ -48,14 +48,5 @@ public class DoctorHomeView extends HomeView {
 
         menu.setLayoutParams(new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
         menu_container.addView(menu);
-    }
-
-    private void createConsultList() {
-        LinearLayout consultList = findViewById(R.id.consult_list);
-
-        for(int i = 0; i < consultStatus.length; i++ ){
-            View consult = creatConsultCard(consultStatus[i], consultDates[i], consultSymptoms[i]);
-            consultList.addView(consult);
-        }
     }
 }

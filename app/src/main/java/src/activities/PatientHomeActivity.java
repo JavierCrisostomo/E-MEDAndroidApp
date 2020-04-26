@@ -7,6 +7,7 @@ import android.view.WindowManager;
 
 import src.Views.home.HomeView;
 import src.Views.home.PatientHomeView;
+import src.domain.LocalStorage;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
 import src.service.impl.PacientProfileServiceMock;
@@ -27,14 +28,20 @@ public class PatientHomeActivity extends HomeActivity {
 
         IPatientProfileService profileService = new PacientProfileServiceMock();
         Intent intent = getIntent();
-        String userKey = "";
+        PatientProfileDto profile = null;
+
+
         try{
-            userKey = intent.getExtras().get("UserKey").toString();
+            profile = (PatientProfileDto) intent.getSerializableExtra("PatientProfile");
         }catch (NullPointerException e){
             e.printStackTrace();
         }
-        PatientProfileDto profile = profileService.getProfile(userKey);
         this.profile = profile;
+
+        if(profile == null){
+            profile = new PacientProfileServiceMock().getProfile("");
+            LocalStorage.setCurrentProfile(profile);
+        }
 
         HomeView patientHomeView = new PatientHomeView(getApplicationContext(), null, profile);
         setContentView(patientHomeView);

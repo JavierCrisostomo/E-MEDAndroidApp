@@ -7,5 +7,6 @@ import org.json.JSONObject;
 import src.service.interfaces.IService;
 
 public interface IUserService extends IService {
-    JSONObject loginUser(String username, String password);
+    boolean loginUser(String username, String password);
+
 }

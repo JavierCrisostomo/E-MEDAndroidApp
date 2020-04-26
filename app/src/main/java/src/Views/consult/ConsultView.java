@@ -6,14 +6,17 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.view.LayoutInflater;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
 
 import e.wolfsoft1.src.R;
 import src.Views.menu.ViewWithMenu;
+import src.customfonts.MyTextView_Roboto_Regular;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
 
@@ -61,5 +64,18 @@ public abstract class ConsultView extends ViewWithMenu {
         Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         profile_image.setImageBitmap(decodedImage);
 
+    }
+
+    protected TextView createChip(CharSequence symptom_name, Context context) {
+        MyTextView_Roboto_Regular chip = new MyTextView_Roboto_Regular(context);
+        chip.setText(symptom_name);
+        chip.setBackgroundResource(R.drawable.facilities_rect);
+//        chip.setPadding(20,20, 20, 20);
+//        chip.setBackgroundResource(R.color.colorSecondaryLightBlue);
+
+        TableRow.LayoutParams chip_layout_params = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        chip_layout_params.setMargins(10, 10, 10, 10);
+        chip.setLayoutParams(chip_layout_params);
+        return chip;
     }
 }

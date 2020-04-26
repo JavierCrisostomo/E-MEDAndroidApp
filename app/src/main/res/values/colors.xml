@@ -26,4 +26,6 @@
     <color name="mainText">#454545</color>
 
     <color name="colorStatusPending">#DB8B00</color>
+    <color name="colorStatusInProgress">#89F114</color>
+    <color name="colorStatusAccepted">#2892D5</color>
 </resources>

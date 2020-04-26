@@ -25,12 +25,17 @@ public class UserService extends AbstractService implements IUserService {
     }
 
     @Override
-    public JSONObject loginUser(String username, String password) {
+    public boolean loginUser(String username, String password) {
         Map<String, String> bodyParams = new HashMap<>();
         bodyParams.put("username", username);
         bodyParams.put("password", password);
 
         JSONObject loginResponse = temaplateSyncPostRequestJSON(server_address + "/rest-auth/login/", bodyParams);
-        return  loginResponse;
+        if(loginResponse != null){
+            return  true;
+        }
+        else{
+            return false;
+        }
     }
 }

@@ -10,6 +10,7 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TableRow;
@@ -18,13 +19,16 @@ import android.widget.TextView;
 import com.google.android.flexbox.FlexboxLayout;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 import e.wolfsoft1.src.R;
 import src.Views.menu.ViewWithMenu;
 import src.Views.menu.MenuView;
 import src.Views.menu.PatientMenuView;
 import src.activities.CommentsEditableConsultActivity;
+import src.activities.PatientHomeActivity;
 import src.customfonts.MyTextView_Roboto_Regular;
+import src.domain.ConsultDto;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
 
@@ -32,18 +36,13 @@ public abstract class HomeView extends ViewWithMenu {
     protected ProfileDto profile;
     protected LayoutInflater inflater;
 
-
-    protected String consultStatus[]={"Pending", "In Progress", "Resolved"};
-    protected String consultDates[]={"14 Aug 2019","10 Mar 2019","22 Feb 2019"};
-    protected String consultSymptoms[]={"Insomnia Headaches Confusion", "Insomnia Headaches Confusion", "Insomnia Headaches Confusion"};
-
-
     @SuppressLint("WrongThread")
     public HomeView(Context context, AttributeSet attrs, ProfileDto profile) {
         super(context, attrs);
         this.profile = profile;
 
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
 
 
     }
@@ -61,9 +60,21 @@ public abstract class HomeView extends ViewWithMenu {
         return chip;
     }
 
+    protected void createConsultList(List<ConsultDto> consults) {
+        LinearLayout consultList = findViewById(R.id.consult_list);
+
+        for(ConsultDto consult: consults){
+            View consultView = creatConsultCard(consult);
+            consultList.addView(consultView);
+        }
+    }
 
 
-    protected View creatConsultCard(String consultStatus, String consultDate, String consultSymptom) {
+    protected View creatConsultCard(final ConsultDto consultDto) {
+        String consultDate = consultDto.getDate();
+        String consultSymptom = consultDto.getSymptoms();
+        String consultStatus = consultDto.getStatus();
+        String consultDescription = consultDto.getDescription();
 
         View consult = inflater.inflate(R.layout.consultation_card_view, null);
 
@@ -74,17 +85,33 @@ public abstract class HomeView extends ViewWithMenu {
         ((TextView) consult.findViewById(R.id.consult_status)).setText(consultStatus);
         ((TextView) consult.findViewById(R.id.consult_status)).setTextColor(getResources().getColor(R.color.colorStatusPending));
 
+        ((TextView) consult.findViewById(R.id.consult_status)).setText(consultStatus);
+        if(consultStatus.equals("Pending")){
+            ((TextView) consult.findViewById(R.id.consult_status)).setTextColor(getResources().getColor(R.color.colorStatusPending));
+        }
+        if(consultStatus.equals("InProgress")){
+            ((TextView) consult.findViewById(R.id.consult_status)).setTextColor(getResources().getColor(R.color.colorStatusInProgress));
+        }
+        if(consultStatus.equals("Accepted")){
+            ((TextView) consult.findViewById(R.id.consult_status)).setTextColor(getResources().getColor(R.color.colorStatusAccepted));
+        }
+
+        ((TextView) consult.findViewById(R.id.consult_description)).setText(consultDescription);
+
+
+
         for(String sym: consultSymptom.split(" ")){
             TextView chip = createChip(sym, getContext());
             ((FlexboxLayout) consult.findViewById(R.id.selected_symptoms_layout)).addView(chip);
         }
-        ((TextView) consult.findViewById(R.id.symptom_description)).setText(getResources().getString(R.string.description));
 
         consult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getContext(), CommentsEditableConsultActivity.class);
                 intent.putExtra("PatientProfile", profile);
+                intent.putExtra("Consult", consultDto);
+
                 getContext().startActivity(intent);
             }
         });

@@ -8,7 +8,7 @@ import src.service.interfaces.IProfileService;
 public class PacientProfileServiceMock implements IPatientProfileService {
     @Override
     public PatientProfileDto getProfile(String userKey) {
-        return new PatientProfileDto("Ioan", "Grozea", "ionut.popescu@gmail.com", "+407401231234", "", "12345678");
+        return new PatientProfileDto("Ioan", "Grozea", "ionan.grozea@gmail.com", "+407111231234", "", "12345678");
     }
 
     @Override

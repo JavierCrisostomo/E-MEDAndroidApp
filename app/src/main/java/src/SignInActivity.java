@@ -18,7 +18,14 @@ import e.wolfsoft1.src.R;
 import src.activities.HomeActivity;
 import src.activities.PatientHomeActivity;
 import src.domain.LocalStorage;
+import src.domain.PatientProfileDto;
+import src.domain.ProfileDto;
+import src.service.impl.DoctorProfileServiceMock;
+import src.service.impl.PacientProfileServiceMock;
 import src.service.impl.UserService;
+import src.service.impl.UserServiceMock;
+import src.service.interfaces.IPatientProfileService;
+import src.service.interfaces.IProfileService;
 import src.service.interfaces.IUserService;
 
 
@@ -31,7 +38,10 @@ public class SignInActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sign_in);
         btnSignIn = (TextView) findViewById(R.id.btnSignIn);
 
-        final IUserService userService = new UserService(getResources().getString(R.string.server_host));
+//        final IUserService userService = new UserService(getResources().getString(R.string.server_host));
+        final IUserService userService = new UserServiceMock();
+
+
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,24 +49,45 @@ public class SignInActivity extends AppCompatActivity {
                 String username = ((EditText) findViewById(R.id.username_editbox)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password_editbox)).getText().toString();
 
-                JSONObject loginResponse = userService.loginUser(username, password);
-
-                if (loginResponse == null) {
-                    loginFailedToast();
-                } else {
-                    try {
-                        String userKey = loginResponse.get("key").toString();
-                        // pass userkey to home activity
-                        Intent intent = new Intent(SignInActivity.this, PatientHomeActivity.class);
-                        intent.putExtra("UserKey", userKey);
-                        LocalStorage.setUserKey(userKey);
-                        startActivity(intent);
-
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        loginFailedToast();
+                if(userService.loginUser(username, password)){
+                    ProfileDto profile = null;
+                    if(username.equals("gregory.house@gmail.com")){
+                        profile = new DoctorProfileServiceMock().getProfile("");
+                       // TODO: doctor home activity
                     }
+                    else {
+                        profile = new PacientProfileServiceMock().getProfile("");
+                        Intent intent = new Intent(SignInActivity.this, PatientHomeActivity.class);
+                        intent.putExtra("PatientProfile", profile);
+
+                        LocalStorage.setCurrentProfile(profile);
+                        startActivity(intent);
+                    }
+
                 }
+                else{
+                    loginFailedToast();
+
+                }
+
+//                if (loginResponse == null) {
+//                    loginFailedToast();
+//                } else {
+//                    try {
+//                        String userKey = loginResponse.get("key").toString();
+//                        // pass userkey to home activity
+//                        Intent intent = new Intent(SignInActivity.this, PatientHomeActivity.class);
+//                        intent.putExtra("UserKey", userKey);
+//                        intent.putExtra("Profile", userKey);
+//
+//                        LocalStorage.setUserKey(userKey);
+//                        startActivity(intent);
+//
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                        loginFailedToast();
+//                    }
+//                }
             }
         });
     }

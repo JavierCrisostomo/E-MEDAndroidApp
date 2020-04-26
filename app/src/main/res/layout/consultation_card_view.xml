@@ -103,7 +103,7 @@
                     app:flexWrap="wrap" />
 
                 <src.customfonts.MyTextView_Roboto_Regular
-                    android:id="@+id/symptom_description"
+                    android:id="@+id/consult_description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"

@@ -1,20 +1,29 @@
 package src.Views.consult;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.SearchView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.unnamed.b.atv.model.TreeNode;
 import com.unnamed.b.atv.view.AndroidTreeView;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import e.wolfsoft1.src.R;
 import src.ViewHolders.SymptomViewHolder;
 import src.Views.menu.PatientMenuView;
+import src.activities.PatientHomeActivity;
+import src.domain.ConsultDto;
+import src.domain.LocalStorage;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
 
@@ -58,7 +67,16 @@ public class PatientCreateConsultView extends ConsultView {
 
         findViewById(R.id.comment_section).setVisibility(GONE);
         findViewById(R.id.doctor_details).setVisibility(GONE);
+        findViewById(R.id.consult_status).setVisibility(GONE);
+        findViewById(R.id.diagnostic_section).setVisibility(GONE);
 
+
+        findViewById(R.id.submit_consultation_button).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createConsultAndGoHome();
+            }
+        });
     }
 
     @Override
@@ -79,7 +97,7 @@ public class PatientCreateConsultView extends ConsultView {
 
         TreeNode nervous_system = createTreeNode(R.drawable.symptom_category, "Nervous System", "General symptoms");
         TreeNode confusion = createTreeNode(R.drawable.symptom_category, "Confusion", "Sensation of light-headedness");
-        TreeNode headache = createTreeNode(R.drawable.symptom_category, "Head ache", "Pain in the head region");
+        TreeNode headache = createTreeNode(R.drawable.symptom_category, "HeadAche", "Pain in the head region");
         nervous_system.addChildren(confusion, headache);
 
         root.addChildren(general, nervous_system);
@@ -150,5 +168,27 @@ public class PatientCreateConsultView extends ConsultView {
             }
         }
         return no_child_fits;
+    }
+
+    private void createConsultAndGoHome(){
+        android.text.format.DateFormat df = new android.text.format.DateFormat();
+        String date_string = (String) df.format("dd MMM yyyy", new Date());
+
+        String symptoms = "";
+        for(Integer key: selectedSymptoms.keySet()){
+            symptoms += ((TextView) selectedSymptoms.get(key)).getText() + " ";
+        }
+
+        String descr = ((EditText) findViewById(R.id.symptom_description_editbox)).getText().toString();
+        ConsultDto consultDto = new ConsultDto(date_string, symptoms, "Pending", descr);
+
+        LocalStorage.getPatientConsults().add(0, consultDto);
+        LocalStorage.getDoctorConsults().add(0, consultDto);
+
+        Toast toast = Toast.makeText(getContext(), "Consult request succesfully created!", Toast.LENGTH_LONG);
+        toast.show();
+
+        Intent intent=new Intent(getContext(), PatientHomeActivity.class);
+        getContext().startActivity(intent);
     }
 }

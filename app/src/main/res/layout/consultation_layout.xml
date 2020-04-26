@@ -15,6 +15,7 @@
 
 
         <ScrollView
+            android:id="@+id/consult_scroll_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:scrollbars="none">
@@ -108,6 +109,16 @@
                                 android:text="Consult Request"
                                 android:textColor="#000"
                                 android:textSize="22dp" />
+
+                            <src.customfonts.MyTextView_Roboto_Regular
+                                android:id="@+id/consult_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Pending..."
+                                android:textColor="@color/colorStatusPending"
+                                android:textSize="14dp" />
+
 
 
 
@@ -327,7 +338,7 @@
                                     android:textColor="#222"
                                     android:textSize="20dp" />
                                 <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                                    android:id="@+id/doctor_profile_image"
+                                    android:id="@id/doctor_profile_image"
                                     android:layout_width="70dp"
                                     android:layout_height="70dp"
                                     android:layout_margin="5dp"
@@ -529,7 +540,7 @@
                             android:layout_weight="1"
                             android:text="Doctor's Comments"
                             android:textColor="#000"
-                            android:textSize="14dp" />
+                            android:textSize="18dp" />
 
                         <src.customfonts.MyTextView_Roboto_Regular
                             android:layout_width="wrap_content"
@@ -540,9 +551,15 @@
                             android:textColor="@color/subText"
                             android:textSize="14dp" />
 
+                        <LinearLayout
+                            android:id="@+id/comments"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
                         <include layout="@layout/doctor_chat_entry"></include>
 
                         <include layout="@layout/patient_chat_entry"></include>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -551,14 +568,19 @@
                             android:orientation="horizontal"
                             android:layout_margin="10dp">
                             <src.customfonts.EditText_Roboto_Meidum
+                                android:id="@+id/add_comment_edittext"
+
                                 android:layout_width="wrap_content"
                                 android:minWidth="200dp"
+                                android:maxWidth="250dp"
+
                                 android:hint="Type a new comment"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="30dp"
                                 android:layout_marginRight="10dp"/>
 
                             <ImageView
+                                android:id="@+id/add_comment_button"
                                 android:layout_width="40dp"
                                 android:layout_height="40dp"
                                 android:src="@drawable/ic_send_message" />
@@ -566,6 +588,94 @@
 
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/diagnostic_section"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <src.customfonts.MyTextView_Roboto_Medium
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_weight="1"
+                            android:text="Doctor's Diagnostic"
+                            android:textColor="#000"
+                            android:textSize="18dp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="3dp"
+                            android:orientation="horizontal">
+
+                            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/diagnostic_doctor_profile_image"
+                                android:layout_width="50dp"
+                                android:layout_height="50dp"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/greg_house"
+                                app:civ_border_color="#00000000"
+                                app:civ_border_width="2dp" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+
+                                <src.customfonts.MyTextView_Roboto_Regular
+                                    android:id="@+id/diagnostic_doctor_name"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Dr. Gregory House"
+                                    android:textColor="#000"
+                                    android:textSize="14dp" />
+
+                                <src.customfonts.MyTextView_Roboto_Medium
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Doctor"
+                                    android:textColor="#777"
+                                    android:textSize="12dp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"/>
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <src.customfonts.MyTextView_Roboto_Regular
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:text="Here you can find your doctor appointer diagnostic: follow it closely and dont hesitate to ask more questions if you need"
+                            android:textColor="@color/subText"
+                            android:textSize="14dp" />
+
+                        <src.customfonts.EditText_Roboto_Light
+                            android:id="@+id/diagnostic_editbox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Type your diagnostic here"
+                            android:text="Try the following:\n1. Take 1 Ibuprofen tablet (400mg) \n2. Take 1 Paracetamol tablet (200mg)\n3. Rest your eyes!"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:textColor="#000"
+                            android:textSize="16dp" />
+
+                    </LinearLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"

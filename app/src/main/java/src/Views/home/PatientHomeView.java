@@ -13,10 +13,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.io.ByteArrayOutputStream;
+import java.util.List;
 
 import e.wolfsoft1.src.R;
 import src.Views.menu.MenuView;
 import src.Views.menu.PatientMenuView;
+import src.domain.ConsultDto;
+import src.domain.LocalStorage;
 import src.domain.PatientProfileDto;
 import src.domain.ProfileDto;
 
@@ -49,8 +52,7 @@ public class PatientHomeView extends HomeView {
         Bitmap decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.length);
         profile_image.setImageBitmap(decodedImage);
 
-
-        createConsultList();
+        createConsultList(LocalStorage.getPatientConsults());
 
     }
 
@@ -66,12 +68,5 @@ public class PatientHomeView extends HomeView {
         menu_container.addView(menu);
     }
 
-    private void createConsultList() {
-        LinearLayout consultList = findViewById(R.id.consult_list);
 
-        for(int i = 0; i < consultStatus.length; i++ ){
-            View consult = creatConsultCard(consultStatus[i], consultDates[i], consultSymptoms[i]);
-            consultList.addView(consult);
-        }
-    }
 }
